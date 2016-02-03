@@ -2,7 +2,6 @@
 
 #include <openssl/sha.h>
 #include <openssl/hmac.h>
-#include <string.h>
 
 #define T0 0
 #define TI 30
@@ -13,8 +12,8 @@ int32_t hotp(const uint8_t* K, const size_t Klen, uint64_t C, const int digits)
 	uint8_t counter[8];
 	for (int i = 8; i --> 0;)
 	{
-			counter[i] = C;
-			C >>= 8;
+		counter[i] = C;
+		C >>= 8;
 	}
 
 	uint8_t hash[SHA_DIGEST_LENGTH];
